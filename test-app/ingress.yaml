@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: reversewords
+  namespace: prueba
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: reversewords.apps.k8s.kubelabs.org
+    http:
+      paths:
+      - backend:
+          service:
+            name: reversewords
+            port:
+              number: 80
+        path: /
+        pathType: Exact
+#  tls:
+#  - hosts:
+#    - reversewords.apps.k8s.kubelabs.org
+#    secretName: reversewords-tls
+#
